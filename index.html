@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101914">
+  <title>FORGOTTEN WORLD STUDIO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">FW</span><span>FORGOTTEN WORLD<small>STUDIO</small></span></a>
+    <div class="top-actions">
+      <span class="save-status" id="saveStatus">Saved in this browser</span>
+      <button class="btn ghost" id="exportProject">Export project</button>
+      <label class="btn ghost file-label">Import project<input id="importProject" type="file" accept=".json,application/json" hidden></label>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">YOUR PERSONAL FILM PRODUCTION WORKSPACE</div>
+      <h1>Build worlds.<br><em>Tell unforgettable stories.</em></h1>
+      <p>Plan scenes, keep character references organised, write generation prompts and assemble your film workflow in one place.</p>
+      <div class="hero-meta"><span class="status-dot"></span> LOCAL PROJECT WORKSPACE <span class="meta-sep">•</span> ONLINE-READY STARTER</div>
+    </section>
+
+    <section class="project-strip panel">
+      <div><label for="projectName">PROJECT NAME</label><input id="projectName" value="THE FORGOTTEN WORLD" maxlength="80"></div>
+      <div><label for="projectSubtitle">PROJECT / PART</label><input id="projectSubtitle" value="PART 1 — THE CALL OF THE UNKNOWN" maxlength="120"></div>
+      <div><label for="projectFormat">FORMAT</label><select id="projectFormat"><option>16:9 Cinematic</option><option>9:16 Vertical</option><option>1:1 Square</option></select></div>
+    </section>
+
+    <nav class="tabs" aria-label="Studio sections">
+      <button class="tab active" data-tab="scenes">Scene Builder</button>
+      <button class="tab" data-tab="characters">Character Vault</button>
+      <button class="tab" data-tab="prompts">Prompt Studio</button>
+      <button class="tab" data-tab="roadmap">AI & Production</button>
+    </nav>
+
+    <section class="view active" id="view-scenes">
+      <div class="section-head"><div><div class="eyebrow">01 / STORY STRUCTURE</div><h2>Scene Builder</h2><p>Break your film into manageable scenes and shots.</p></div><button class="btn primary" id="addScene">＋ Add scene</button></div>
+      <div class="scene-layout">
+        <aside class="panel scene-list"><div class="panel-title">YOUR SCENES <span id="sceneCount">0</span></div><div id="sceneList"></div></aside>
+        <div class="panel scene-editor" id="sceneEditor"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-characters">
+      <div class="section-head"><div><div class="eyebrow">02 / VISUAL CONTINUITY</div><h2>Character Vault</h2><p>Keep your approved character designs together. Images stay in this browser until you export or back them up.</p></div></div>
+      <form class="panel character-form" id="characterForm">
+        <div class="form-grid"><div><label for="characterName">CHARACTER NAME</label><input id="characterName" placeholder="e.g. AADI" required></div><div><label for="characterType">TYPE</label><select id="characterType"><option>Dinosaur</option><option>Creature</option><option>Human</option><option>Other</option></select></div></div>
+        <label for="characterDescription">APPROVED DESIGN NOTES</label><textarea id="characterDescription" rows="3" placeholder="Colours, markings, eyes, distinctive features, proportions..."></textarea>
+        <label class="upload-zone">＋ Upload reference image<input id="characterImage" type="file" accept="image/*" hidden></label>
+        <button class="btn primary" type="submit">Add character</button>
+      </form>
+      <div class="character-grid" id="characterGrid"></div>
+    </section>
+
+    <section class="view" id="view-prompts">
+      <div class="section-head"><div><div class="eyebrow">03 / SHOT DESIGN</div><h2>Prompt Studio</h2><p>Turn a scene brief into a structured, reusable video-generation prompt.</p></div></div>
+      <div class="panel prompt-workspace">
+        <label for="promptScene">SCENE DESCRIPTION</label>
+        <textarea id="promptScene" rows="4" placeholder="Describe the action, location, characters and mood..."></textarea>
+        <div class="form-grid">
+          <div><label for="promptDuration">DURATION</label><select id="promptDuration"><option>5 seconds</option><option selected>10 seconds</option><option>15 seconds</option><option>30 seconds</option></select></div>
+          <div><label for="promptCamera">CAMERA STYLE</label><select id="promptCamera"><option>Wide establishing shot with slow push-in</option><option>Low-angle tracking shot</option><option>Slow aerial reveal</option><option>Medium shot with gentle orbit</option><option>Close-up with controlled dolly-in</option><option>Single continuous tracking shot</option></select></div>
+        </div>
+        <button class="btn primary" id="buildPrompt">Build cinematic prompt</button>
+        <label for="promptOutput">GENERATED PROMPT</label>
+        <textarea id="promptOutput" rows="12" placeholder="Your structured prompt will appear here..."></textarea>
+        <button class="btn ghost" id="copyPrompt">Copy prompt</button>
+      </div>
+    </section>
+
+    <section class="view" id="view-roadmap">
+      <div class="section-head"><div><div class="eyebrow">04 / NEXT MODULES</div><h2>AI & Production Engine</h2><p>Our staged plan for turning this starter into a complete movie-making platform.</p></div></div>
+      <div class="roadmap-grid">
+        <article class="panel roadmap-card"><span class="step">01</span><h3>Project & scene management</h3><p>Working now: create scenes, edit descriptions, save automatically and export project JSON.</p><span class="pill ready">Starter ready</span></article>
+        <article class="panel roadmap-card"><span class="step">02</span><h3>Character reference library</h3><p>Working now: upload reference images and record approved design details.</p><span class="pill ready">Starter ready</span></article>
+        <article class="panel roadmap-card"><span class="step">03</span><h3>Timeline & media editor</h3><p>Next: arrange video, image, narration and music tracks; trim and sequence shots.</p><span class="pill planned">Planned</span></article>
+        <article class="panel roadmap-card"><span class="step">04</span><h3>AI generation connectors</h3><p>Next: connect compatible image/video models. Free services may have queues, quotas or hardware limits.</p><span class="pill planned">Planned</span></article>
+        <article class="panel roadmap-card"><span class="step">05</span><h3>Rendering & export</h3><p>Next: render a finished MP4. Browser and free-host resource limits will determine resolution and duration.</p><span class="pill planned">Planned</span></article>
+        <article class="panel roadmap-card"><span class="step">06</span><h3>Online accounts & cloud storage</h3><p>Optional later: secure accounts and cloud project storage. Never upload private API keys into browser code.</p><span class="pill planned">Planned</span></article>
+      </div>
+      <div class="notice"><strong>Honest limitation:</strong> this first release is a project-planning and prompt-building studio, not yet an AI video generator. A free static host can serve the website, but it cannot supply unlimited video-generation compute.</div>
+    </section>
+
+    <footer><span>FORGOTTEN WORLD STUDIO</span><span>Build 0.1 · Free starter</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
